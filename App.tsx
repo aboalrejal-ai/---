@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SceneComponent from './components/Scene';
 import { SECTIONS, NAV_ORDER, INITIAL_ACHIEVEMENTS, QUIZ_QUESTIONS } from './constants';
 import type { Section, Achievement, QuizQuestion } from './types';
