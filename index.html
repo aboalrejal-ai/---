@@ -4,99 +4,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الخواص الجامعة للمحاليل: رحلة ثلاثية الأبعاد</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
-
+  <title>منصة النشاط الطلابي - محمد ابوالرجال</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="منصة متكاملة لإدارة النشاط الطلابي - إدارة الحضور والغياب، التسميع، الفعاليات والمالية" />
+  <meta name="keywords" content="نشاط طلابي، إدارة طلاب، حضور وغياب، تسميع، فعاليات، مدرسة" />
+  <meta name="author" content="محمد ابوالرجال" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="منصة النشاط الطلابي" />
+  <meta property="og:description" content="حل متكامل لإدارة جميع جوانب النشاط الطلابي" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_SA" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --brand-primary-dark: #004AAD;
-      --brand-primary-light: #4956F9;
-      --brand-accent: #ffde1d;
-      --brand-text: #FFFFFF;
-    }
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      color: var(--brand-text);
-      overflow: hidden;
-      background-color: #050A18;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    @keyframes slideIn { 
-      from { transform: translateX(120%); } 
-      to { transform: translateX(0); } 
-    }
-    @keyframes slideOut { 
-      from { transform: translateX(0); } 
-      to { transform: translateX(120%); } 
-    }
-    .toast-animate {
-        animation: slideIn 0.5s forwards, slideOut 0.5s 4.5s forwards;
-    }
-    .loading-spinner-animate {
-        animation: spin 1s linear infinite;
-    }
-  </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "three": "https://aistudiocdn.com/three@^0.180.0",
-    "three/": "https://aistudiocdn.com/three@^0.180.0/",
-    "gsap": "https://aistudiocdn.com/gsap@^3.13.0"
-  }
-}
-</script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#1e3a8a" />
+  
+  <!-- Viewport for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
   <div id="root"></div>
-
-  <script id="lava-vertex-shader" type="x-shader/x-vertex">
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  </script>
-  <script id="lava-fragment-shader" type="x-shader/x-fragment">
-    uniform float time;
-    uniform vec3 color1;
-    uniform vec3 color2;
-    varying vec2 vUv;
-
-    float random (vec2 st) {
-      return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
-    }
-
-    float noise (vec2 st) {
-      vec2 i = floor(st);
-      vec2 f = fract(st);
-      float a = random(i);
-      float b = random(i + vec2(1.0, 0.0));
-      float c = random(i + vec2(0.0, 1.0));
-      float d = random(i + vec2(1.0, 1.0));
-      vec2 u = f*f*(3.0-2.0*f);
-      return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
-    }
-
-    void main() {
-      vec2 uv = vUv * 5.0;
-      float n = noise(uv + time * 0.2);
-      vec3 color = mix(color1, color2, n);
-      gl_FragColor = vec4(color, 1.0);
-    }
-  </script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
